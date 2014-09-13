@@ -1,0 +1,1 @@
+if (Boards.find().count() === 0) {  Boards.insert({    title: 'MeteorSweeper 2014-09-12 08:25:23',    cells: []  });}
