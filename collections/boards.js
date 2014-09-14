@@ -27,10 +27,10 @@ Meteor.methods({
 
       cells[i] = {cellType: cellType, nearbyBombs: 0};
     }
+    // TODO: randomly add bombs
 
-    var fields = {
-      width:  attributes['width'] || 10,
-      height: attributes['height'] || 10,
-    }
+    return Boards.insert({
+      cells: cells
+    });
   }
 });

@@ -1,2 +1,11 @@
 <template name="board">
+  <div class="board-wrap">
+    {{#each rows}}
+      <ul class="row">
+        {{#each columns}}
+          {{> cell}}
+        {{/each}}
+      </ul>
+    {{/each}}
+  </div>
 </template>
