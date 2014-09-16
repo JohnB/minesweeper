@@ -17,7 +17,8 @@ Template.controls.helpers({
 
 Template.controls.events({
   'click button': function () {
-    // increment the counter when button is clicked
-    Session.set("counter", Session.get("counter") + 1);
+    var board = {};
+    board._id = Board.insert(board);
+    // Router.go('postPage', board);
   }
 });
