@@ -6,6 +6,18 @@
   </a>
   <h1>Welcome to MeteorSweeper!</h1>
 
+  {{#if currentUser}}
+    {{> loginButtons}}
+    <br>
+    Here is your list of games
+  {{else}}
+    Play a game by yourself
+    <br>
+    OR
+    <br>
+    {{> loginButtons}}
+  {{/if}}
+
   {{> controls}}
   {{> board}}
 </template>
