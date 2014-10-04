@@ -1,0 +1,11 @@
+<template name="createGame">
+  <br>
+  {{#if sessionCreatingGame }}
+    <label for="gameNamePrefix"></label>
+    <input name="gameNamePrefix" placeholder="yourNameHere" type="text" value="{{sessionGameNamePrefix}}" />
+    <br>
+    <button class="play">Play Game</button>
+  {{else}}
+    <button class="create">Create Game</button>
+  {{/if}}
+</template>
