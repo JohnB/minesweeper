@@ -25,13 +25,31 @@ Template.createGame.events({
         var prefix = $('input[name=gameNamePrefix]').val();
         var height = $('input[name=height]').val();
         var width  = $('input[name=width]').val();
-        var bombs  = $('input[name=bombs]').val();
+        var numBombs = $('input[name=bombs]').val();
         var fullName = prefix + '_' + yyyymmdd_hhmmss(now);
         Session.set('gameNamePrefix', prefix );
         Session.set('gameWidth', width );
         Session.set('gameHeight', height );
-        Session.set('gameBombs', bombs );
-        Session.set('creatingGame', undefined );
+        Session.set('gameBombs', numBombs );
+        var shuffle = function(arr) {
+            var length = arr.length;
+            for(i = 0; i < 5 * length; i++) {
+                var r1 = Math.floor(Math.random()*length),
+                    r2 = Math.floor(Math.random()*length),
+                    swap = arr[r1];
+                arr[r1] = arr[r2];
+                arr[r2] = swap;
+            };
+            return arr;
+        };
+        var randomBombs = function(w, h, numBombs) {
+            // TODO: figure out where to put utility functions like this.
+            var array = [];
+            for(i = 0; i < w*h; i++) { array.push(i); }
+            array = shuffle(array);
+            return array.slice(0, numBombs);
+        };
+        var bombs = randomBombs(width, height, numBombs);
 
         Games.insert( {created_at: now, name: fullName, width: width, height: height, bombs: bombs, user: Meteor.userId()},
           function(err,id) {
@@ -39,8 +57,10 @@ Template.createGame.events({
                 Session.set('currentGame', undefined );
                 console.log(err);
                 alert('oops, there was an error: ' + err);
-            } else {
+            } else {  // success
+                Session.set('creatingGame', undefined );
                 Session.set('currentGame', id );
+                Router.go('showGame', {_id: id})
             }
         } );
     }

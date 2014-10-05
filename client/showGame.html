@@ -1,8 +1,14 @@
 <template name="showGame">
+    <a href="{{ pathFor 'games' }}">
+        &lt;&lt; Back to Games
+    </a>
+    <br/>
     <li>
         {{name}}
         {{width}}
         {{height}}
-        {{bombs}}
+        {{#each bombs}}
+            {{this}}
+        {{/each}}
     </li>
 </template>
