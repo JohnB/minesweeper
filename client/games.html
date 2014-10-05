@@ -9,7 +9,11 @@
     {{> createGame}}
     <ul>
         {{#each games}}
-            {{> showGame}}
+            <li>
+                <a href="{{ pathFor 'showGame' }}">
+                    {{name}}
+                </a>
+            </li>
         {{/each}}
     </ul>
 </template>
