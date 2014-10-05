@@ -1,8 +1,16 @@
 <template name="createGame">
   <br>
   {{#if sessionCreatingGame }}
-    <label for="gameNamePrefix"></label>
+    <label for="gameNamePrefix">Name: </label>
     <input name="gameNamePrefix" placeholder="yourNameHere" type="text" value="{{sessionGameNamePrefix}}" />
+    <br>
+    <label for="width">Size: </label>
+    <input name="width" type="text" size="3" value="{{sessionGameWidth}}" />
+    x
+    <input name="height" type="text" size="3" value="{{sessionGameHeight}}" />
+    <br>
+    <label for="bombs">Bombs: </label>
+    <input name="bombs" type="text" size="3" value="{{sessionGameBombs}}" />
     <br>
     <button class="play">Play Game</button>
   {{else}}
