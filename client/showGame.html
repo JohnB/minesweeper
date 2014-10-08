@@ -3,12 +3,16 @@
         &lt;&lt; Back to Games
     </a>
     <br/>
-    <li>
-        {{name}}
-        {{width}}
-        {{height}}
-        {{#each bombs}}
-            {{this}}
-        {{/each}}
-    </li>
+        {{name}} ( {{width}} {{height}} {{#each bombs}} {{this}} {{/each}} )
+        <table>
+            {{#each boardRow this}}
+                <tr>
+                    {{#each row}}
+                        <td>
+                            {{bomb}}
+                        </td>
+                    {{/each}}
+                </tr>
+            {{/each}}
+        </table>
 </template>
