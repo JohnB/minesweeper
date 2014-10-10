@@ -4,11 +4,8 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-autopublish
-insecure
 reywood:iron-router-ga
 iron:router
 accounts-twitter
 accounts-ui
 accounts-github
-

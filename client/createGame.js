@@ -1,8 +1,8 @@
 Template.createGame.helpers({
     sessionGameNamePrefix: function() { return Session.get('gameNamePrefix') || Meteor.user().profile.name; },
-    sessionGameWidth:      function() { return Session.get('gameWidth') || 20; },
-    sessionGameHeight:     function() { return Session.get('gameHeight') || 20; },
-    sessionGameBombs:      function() { return Session.get('gameBombs') || 30; },
+    sessionGameWidth:      function() { return Session.get('gameWidth') || 8; },
+    sessionGameHeight:     function() { return Session.get('gameHeight') || 7; },
+    sessionGameBombs:      function() { return Session.get('gameBombs') || 14; },
     sessionCreatingGame:   function() { return Session.get('creatingGame'); }
 });
 
@@ -25,7 +25,8 @@ Template.createGame.events({
         Session.set('gameHeight', height );
         Session.set('gameBombs', numBombs );
 
-        Games.insert( {created_at: now, name: fullName, width: width, height: height, bombs: bombs, user: Meteor.userId()},
+//        Games.insert( {created_at: now, name: fullName, width: width, height: height, bombs: bombs, user: Meteor.userId()},
+        Meteor.call( "addGame", {created_at: now, name: fullName, width: width, height: height, bombs: bombs, user: Meteor.userId()},
           function(err,id) {
             if (err) {
                 Session.set('currentGame', undefined );
