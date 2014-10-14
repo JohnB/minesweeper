@@ -3,16 +3,13 @@
         &lt;&lt; Back to Games
     </a>
     <br/>
-        {{name}} ( {{width}} {{height}} {{#each bombs}} {{this}} {{/each}} )
-        <table>
+        <h1>Game {{name}}</h1>
+
+        <div class="board-wrap">
             {{#each boardRow this}}
-                <tr>
-                    {{#each row}}
-                        <td>
-                            {{bomb}}
-                        </td>
-                    {{/each}}
-                </tr>
+                <div class="row">
+                    {{#each row}}<span class="cell unknown">{{bomb}}</span>{{/each}}
+                </div>
             {{/each}}
-        </table>
+        </div>
 </template>
