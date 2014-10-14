@@ -17,6 +17,10 @@ Template.showGame.helpers({
     },
     cellClass: "cell",
     cellValue: function(isBomb) {
-        return isBomb ? "B" : "";
+        var cellV = isBomb ? "B" : (''+Math.floor(Math.random()*6) );
+        if (cellV == '0') {
+            cellV = '';
+        }
+        return cellV;
     }
 });
