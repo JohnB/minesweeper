@@ -9,10 +9,14 @@ Template.showGame.helpers({
             var row = [];
             for(j = 0; j < game.width; j++) {
                 var cell = i*game.width+j;
-                row.push({cell: cell, bomb: (game.bombs.indexOf(cell) >= 0) ? 'x' : '' });
+                row.push({cell: cell, isBomb: (game.bombs.indexOf(cell) >= 0) });
             }
             result.push({row: row});
         }
         return result;
+    },
+    cellClass: "cell",
+    cellValue: function(isBomb) {
+        return isBomb ? "B" : "";
     }
 });

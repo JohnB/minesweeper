@@ -8,7 +8,7 @@
         <div class="board-wrap">
             {{#each boardRow this}}
                 <div class="row">
-                    {{#each row}}<span class="cell unknown">{{bomb}}</span>{{/each}}
+                    {{#each row}}<span class="{{cellClass}}">{{cellValue isBomb}}</span>{{/each}}
                 </div>
             {{/each}}
         </div>
